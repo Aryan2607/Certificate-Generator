@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Certificate Generator</div>
+        <nav class="navigation">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'index' %}">Certificate Generator</a>
+            <a href="{% url 'validate_certificate' %}">Validate</a>
+            <a href="{% url 'admin:index' %}">Administration</a>
+        </nav>
+    </header>
+    <div class="form-container">
+        <h1>Certificate Details</h1>
+        <p><strong>Certificate ID:</strong> {{ certificate_id }}</p>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Paragraph:</strong> {{ paragraph }}</p>
+        <p><strong>Certificate Type:</strong> {{ certificate_type }}</p>
+        <p><strong>Date:</strong> {{ date }}</p>
+        <p><strong>Signature:</strong> {{ signature }}</p>
+        <p><strong>Selected Template ID:</strong> {{ selected_template_id }}</p>
+        <!-- Add more certificate details here as needed -->
+    </div>
+</body>
+</html>

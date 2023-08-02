@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Certificate Generator</div>
+        <nav class="navigation">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'index' %}">Certificate Generator</a>
+            <a href="{% url 'validate_certificate' %}">Validate</a>
+            <a href="{% url 'admin:index' %}">Administration</a>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="Template">Choose Template:</label>
+            <div class="template-buttons">
+                <button type="button" class="template-button" data-id="template1" id="template1" onclick="selectTemplate('template1')">Template 1</button>
+                <button type="button" class="template-button" data-id="template2" id="template2" onclick="selectTemplate('template2')">Template 2</button>
+            </div>
+            <input type="hidden" name="template_id" id="selected_template_id">
+
+            <label for="certificate_type">Certificate Type:</label>
+            <input type="text" name="certificate_type" required>
+
+            <label for="name">Recipient Name:</label>
+            <input type="text" name="name" required>
+
+            <label for="paragraph">Description:</label>
+            <input type="text" name="paragraph" required>
+
+            <label for="date">Choose Date:</label>
+            <input type="date" name="date" required>
+
+            <label for="signature">Name of Signer:</label>
+            <input type="text" name="signature" required>
+
+            <button class="submit" type="submit">Generate Certificate</button>
+        </form>
+    </div>
+    <script>
+        function selectTemplate(templateId) {
+            document.getElementById('selected_template_id').value = templateId;
+
+            var templateButtons = document.querySelectorAll('.template-button');
+            templateButtons.forEach(function(button) {
+                button.classList.remove('clicked');
+            });
+
+            var selectedButton = document.getElementById(templateId);
+            selectedButton.classList.add('clicked');
+        }
+    </script>
+</body>
+
+</html>

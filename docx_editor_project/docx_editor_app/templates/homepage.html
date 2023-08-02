@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <header>
+            <div class="logo">Certificate Generator</div>
+            <nav class="navigation">
+                <a href="{% url 'homepage' %}">Home</a>
+                <a href="{% url 'index' %}">Certificate Generator</a>
+                <a href="{% url 'validate_certificate' %}">Validate</a>
+                <a href="{% url 'admin:index' %}">Administration</a>
+            </nav>
+        </header>
+        <div class="center-button">
+            <a href="{% url 'index' %}">Certificate Generator</a>
+        </div>
+    </form>
+</body>
+
+</html>

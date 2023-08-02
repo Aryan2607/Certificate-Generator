@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/confirm.css' %}">
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>Certificate generated successfully!</h1>
+        <p>Preview your generated PDF file:</p>
+        <div id="preview-iframe-container">
+            <iframe src="{{ pdf_output_filepath }}" width="100%" height="500px"></iframe>
+        </div>
+    </div>
+</body>
+</html>
